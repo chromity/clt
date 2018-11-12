@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SSC Monitoring System</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row" id="app-navbar">
+        <div>
+            <img src="{% static 'icon.png' %}"
+                    style="height: 48px; padding-left: 15px; margin-top: -36px;"/>
+        </div>
+        <a class="remove-hover-underline" href="{% url 'monitoring:index' %}">
+        <div id="app-navbar-title">
+            <h3 class="app-navbar-text app-navbar-title">Monitoring System</h3>
+            <h3 class="app-navbar-text app-navbar-subtitle">Supreme Student Council TIP-QC</h3>
+        </div></a>
+
+        <div class="nav-links">
+            <a class="remove-hover-underline" href="{% url 'monitoring:statistics' %}"><h2>Statistics</h2></a>
+            <a class="remove-hover-underline" href="{% url 'monitoring:profile' %}"><h2>Profile</h2></a>
+        </div>
+    </div>
+</div>
+<!-- content from templates will be inserted here -->
+<div class="container-fluid">
+    {% block content %}
+    {% endblock content %}
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/shards.js' %}"></script>
+<script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>
