@@ -7,13 +7,18 @@ class Officer(models.Model):
     middle_initial = models.CharField(max_length=128)
     last_name = models.CharField(max_length=128)
     sex = models.CharField(max_length=1, choices=(('M', 'MALE'), ('F', 'FEMALE')))
-    cp_contact_number = models.CharField(max_length=11)
+    cp_contact_number = models.CharField(max_length=11, null=True, blank=True)
 
     is_login = models.BooleanField(default=False, null=False)
-    latest_login = models.DateTimeField(null=True)
-    latest_logout = models.DateTimeField(null=True)
-    weekly_time_spent = models.DurationField(null=True)
-    daily_time_spent = models.DurationField(null=True)
+    latest_login = models.DateTimeField(null=True, blank=True)
+    latest_logout = models.DateTimeField(null=True, blank=True)
+    weekly_time_spent = models.DurationField(null=True, blank=True)
+    daily_time_spent = models.DurationField(null=True, blank=True)
+
+    weekly_time_spent_hour = models.IntegerField(null=True, blank=True)
+    weekly_time_spent_minutes = models.IntegerField(null=True, blank=True)
+    daily_time_spent_hour = models.IntegerField(null=True, blank=True)
+    daily_time_spent_minutes = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.last_name + ", " + self.first_name
@@ -26,7 +31,6 @@ class Login(models.Model):
     duration = models.DurationField(null=True)
 
     temp_stn = models.CharField(null=False, max_length=7, default="")
-    date = models.DateField(null=True)
 
     def __str__(self):
         return str(self.time_login) + " " + str(self.officer)

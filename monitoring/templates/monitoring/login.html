@@ -35,22 +35,33 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th scope="col" style="width: 30%;"></th>
-                    <th scope="col" style="width: 15%;">LATEST LOGIN</th>
-                    <th scope="col" style="width: 15%;">LATEST LOGOUT</th>
+                    <th scope="col" style="width: 24%;"></th>
+                    <th scope="col" style="width: 18%;">LATEST LOGIN</th>
+                    <th scope="col" style="width: 18%;">LATEST LOGOUT</th>
                     <th scope="col" style="width: 15%;">WEEKLY TIME SPENT</th>
                     <th scope="col" style="width: 15%;">DAILY TIME SPENT</th>
-                    </th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for each in officer %}
+                {% for each in officer_data %}
                     <tr>
-                        <td>{{ each.last_name }}</td>
-                        <td>{{ each.first_name }}</td>
+                        <td>{{ each.last_name}}<span>, </span>{{each.first_name }}</td>
                         <td>{{ each.latest_login }}</td>
+                        {% if each.latest_logout == None and each.latest_login != None %}
+                        <td>Currently Login</td>
+                        {% else %}
                         <td>{{ each.latest_logout }}</td>
-                        <td>{{ each.weekly_time_spent }}</td>
+                        {% endif %}
+                        {% if each.weekly_time_spent == None %}
+                        <td>No data</td>
+                        {% else %}
+                        <td>{{ each.weekly_time_spent_hour }}<span> hrs </span>{{ each.weekly_time_spent_minutes }}<span> mins</span></td>
+                        {% endif %}
+                        {% if each.daily_time_spent == None %}
+                        <td>No data</td>
+                        {% else %}
+                        <td>{{ each.daily_time_spent_hour }}<span> hrs </span>{{ each.daily_time_spent_minutes }}<span> mins</span></td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
                 </tbody>

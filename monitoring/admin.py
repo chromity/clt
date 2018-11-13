@@ -1,3 +1,6 @@
 from django.contrib import admin
+from monitoring.models import Officer, Login
 
-# Register your models here.
+
+admin.site.register(Officer)
+admin.site.register(Login)
