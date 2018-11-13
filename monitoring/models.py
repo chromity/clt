@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import timedelta
 
 
 class Officer(models.Model):
@@ -13,8 +14,8 @@ class Officer(models.Model):
     is_login = models.BooleanField(default=False, null=False)
     latest_login = models.DateTimeField(null=True, blank=True)
     latest_logout = models.DateTimeField(null=True, blank=True)
-    weekly_time_spent = models.DurationField(null=True, blank=True)
-    daily_time_spent = models.DurationField(null=True, blank=True)
+    weekly_time_spent = models.DurationField(null=False, default=timedelta())
+    daily_time_spent = models.DurationField(null=False, default=timedelta())
 
     weekly_time_spent_hour = models.IntegerField(null=True, blank=True)
     weekly_time_spent_minutes = models.IntegerField(null=True, blank=True)
