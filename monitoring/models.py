@@ -7,6 +7,7 @@ class Officer(models.Model):
     middle_initial = models.CharField(max_length=128)
     last_name = models.CharField(max_length=128)
     sex = models.CharField(max_length=1, choices=(('M', 'MALE'), ('F', 'FEMALE')))
+    officer_type = models.CharField(max_length=4, choices=(('SSC', 'Supreme Student Council'), ('YLEAP', 'YLEAP')))
     cp_contact_number = models.CharField(max_length=11, null=True, blank=True)
 
     is_login = models.BooleanField(default=False, null=False)
