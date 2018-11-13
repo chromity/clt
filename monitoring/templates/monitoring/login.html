@@ -52,12 +52,12 @@
                         {% else %}
                         <td>{{ each.latest_logout }}</td>
                         {% endif %}
-                        {% if each.weekly_time_spent == None %}
+                        {% if each.weekly_time_spent == 0 %}
                         <td>No data</td>
                         {% else %}
                         <td>{{ each.weekly_time_spent_hour }}<span> hrs </span>{{ each.weekly_time_spent_minutes }}<span> mins</span></td>
                         {% endif %}
-                        {% if each.daily_time_spent == None %}
+                        {% if each.daily_time_spent == 0 %}
                         <td>No data</td>
                         {% else %}
                         <td>{{ each.daily_time_spent_hour }}<span> hrs </span>{{ each.daily_time_spent_minutes }}<span> mins</span></td>
