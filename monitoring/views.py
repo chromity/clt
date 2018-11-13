@@ -8,10 +8,12 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+@login_required(login_url='admin:login')
 def index(request):
     return render(request, 'monitoring/index.html')
 
 
+@login_required(login_url='admin:login')
 def login(request):
     officer_data = Officer.objects.order_by('-daily_time_spent')
 
@@ -74,17 +76,21 @@ def login(request):
         return render(request, 'monitoring/login.html', {'form': form, 'officer_data': officer_data})
 
 
+@login_required(login_url='admin:login')
 def history(request):
     pass
 
 
+@login_required(login_url='admin:login')
 def statistics(request):
     pass
 
 
+@login_required(login_url='admin:login')
 def profile(request):
     pass
 
 
+@login_required(login_url='admin:login')
 def reports(request):
     pass
