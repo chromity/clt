@@ -8,14 +8,14 @@ class Officer(models.Model):
     middle_initial = models.CharField(max_length=128)
     last_name = models.CharField(max_length=128)
     sex = models.CharField(max_length=1, choices=(('M', 'MALE'), ('F', 'FEMALE')))
-    officer_type = models.CharField(max_length=4, choices=(('SSC', 'Supreme Student Council'), ('YLEAP', 'YLEAP')))
+    officer_type = models.CharField(max_length=5, choices=(('SSC', 'Supreme Student Council'), ('YLEAP', 'YLEAP')))
     cp_contact_number = models.CharField(max_length=11, null=True, blank=True)
 
     is_login = models.BooleanField(default=False, null=False)
     latest_login = models.DateTimeField(null=True, blank=True)
     latest_logout = models.DateTimeField(null=True, blank=True)
-    weekly_time_spent = models.DurationField(null=False, default=timedelta())
-    daily_time_spent = models.DurationField(null=False, default=timedelta())
+    weekly_time_spent = models.DurationField(null=False)
+    daily_time_spent = models.DurationField(null=False)
 
     weekly_time_spent_hour = models.IntegerField(null=True, blank=True)
     weekly_time_spent_minutes = models.IntegerField(null=True, blank=True)
